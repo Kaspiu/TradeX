@@ -1,1 +1,339 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
+body {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #191d26;
+}
+.main {
+  position: relative;
+  width: 1400px;
+  min-height: 850px;
+  margin: 20px 0;
+  padding: 5px;
+  color: #f0f1f5;
+  display: flex;
+
+  border-radius: 10px;
+  box-shadow: 0 4px 10px 5px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* -----------------LEFT----------------- */
+
+.left {
+  width: 60%;
+  padding: 20px;
+}
+.calendar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #191d26;
+  border-radius: 5px;
+  background-color: rgb(240, 241, 245, 0.95);
+  user-select: none;
+}
+
+.calendar .month {
+  width: 100%;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.calendar .month button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.calendar .month button:hover {
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+.calendar .weekdays {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.weekdays div {
+  width: 14.28%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calendar .days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.calendar .goto {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  color: #191d26;
+}
+.calendar .goto .goto-date {
+  display: flex;
+  align-items: center;
+}
+.calendar .goto .goto-date input {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  padding: 0 20px;
+  color: #191d26;
+}
+.calendar .goto button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  font-weight: 500;
+  padding: 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #191d26;
+  transition: 0.3s;
+}
+.calendar .goto button:hover {
+  color: #f0f1f5;
+  background-color: rgba(25, 29, 38, 0.9);
+}
+.calendar .goto .goto-date button {
+  border: none;
+  border-radius: 5px;
+}
+
+/* -----------------RIGHT----------------- */
+
+.main .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  padding: 20px;
+  user-select: none;
+}
+
+.right .today-date {
+  width: 100%;
+  height: 125px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  text-transform: capitalize;
+  color: #f0f1f5;
+}
+
+.right .today-date .app-title {
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+.right .today-date .trade-date {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f0f1f5;
+}
+.trades {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-btn-section {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.add-btn-section p {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 25px;
+}
+
+.add-btn-section .add-trade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  font-size: 1.2rem;
+  color: #f0f1f5;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add-btn-section .add-trade:hover {
+  background-color: #f0f1f5;
+  color: #191d26;
+  transform: rotate(360deg);
+}
+
+.add-trade-wrapper {
+  position: absolute;
+  bottom: 85px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f1f5;
+  color: #191d26;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.add-trade-wrapper .add-trade-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background-color: #f0f1f5;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #dddee1;
+}
+
+.add-trade-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.add-trade-header button:hover {
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
+.add-trade-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 25px;
+}
+.add-trade-body .add-trade-input {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-trade-body .add-trade-input input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #dddee1;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #f0f1f5;
+  color: #191d26;
+  transition: 0.3s;
+}
+.add-trade-body .add-trade-input input::placeholder {
+  color: #a5a5a5;
+}
+.add-trade-body .add-trade-input input:focus {
+  border-bottom: 1px solid #191d26;
+}
+.add-trade-body .add-trade-input input:focus::placeholder {
+  color: #191d26;
+}
+
+.add-trade-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.add-trade-footer .add-trade-btn {
+  height: 40px;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  color: #191d26;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+.add-trade-footer .add-trade-btn:hover {
+  background-color: rgba(25, 29, 38, 0.9);
+  color: #f0f1f5;
+}
