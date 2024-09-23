@@ -238,6 +238,7 @@ body {
   position: absolute;
   bottom: 85px;
   width: 30%;
+  height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -246,6 +247,7 @@ body {
   color: #191d26;
   border-radius: 5px;
   overflow: hidden;
+  transition: 0.5s;
 }
 
 .add-trade-wrapper .add-trade-header {
