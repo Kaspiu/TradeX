@@ -54,10 +54,10 @@
           <div class="trade-date">current date</div>
         </div>
         <div class="trades"></div>
-        <div class="add-trade-wrapper">
+        <div id="addMenu" class="add-trade-wrapper">
           <div class="add-trade-header">
             <div class="title">Add Trade</div>
-            <button>
+            <button onclick="closeAddTradeMenu()">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>
@@ -93,11 +93,13 @@
         </div>
         <div class="add-btn-section">
           <div class="author"><p>Made by Project PYT</p></div>
-          <button class="add-trade">
+          <button onclick="openAddTradeMenu()" class="add-trade">
             <i class="fa-solid fa-plus"></i>
           </button>
         </div>
       </div>
     </div>
+
+    <script src="./js/script.js"></script>
   </body>
 </html>
