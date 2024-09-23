@@ -1,6 +1,4 @@
-# CURRENT STATE 20% ⏳
-
---- IN PROGRESS ---
+# CURRENT STATE 20% DONE ⏳
 
 ## TradeX
 
