@@ -1,4 +1,4 @@
-# CURRENT STATE ⏳
+# CURRENT STATE 20% ⏳
 
 --- IN PROGRESS ---
 
