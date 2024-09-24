@@ -36,6 +36,7 @@ let tradesArr = JSON.parse(localStorage.getItem("trades")) || [];
 
 function openAddTradeMenu() {
   menu.style.height = "330px";
+  calculateTotalProfitForSelectedDay();
 }
 
 function closeAddTradeMenu() {
@@ -181,7 +182,7 @@ function updatetrades(day) {
         <div class="trade">
           <div class="singleTradeContent">
             <div class="title">
-              <i class="fa-solid fa-circle"></i>
+              <i style="color: #3cb043" class="fa-solid fa-circle"></i>
               <p class="trade-title">${trade.title}</p>
               <div class="trade-time">
                 <span class="trade-time">${trade.time}</span>
@@ -200,7 +201,7 @@ function updatetrades(day) {
         <div class="trade">
           <div class="singleTradeContent">
             <div class="title">
-              <i class="fa-solid fa-circle"></i>
+              <i style="color: #d0312D" class="fa-solid fa-circle"></i>
               <p class="trade-title">${trade.title}</p>
               <div class="trade-time">
                 <span class="trade-time">${trade.time}</span>
@@ -299,8 +300,9 @@ function addTradeSumbit() {
   updatetrades(activeDay);
 
   const activeDayEl = document.querySelector(".day.active");
-  if (!activeDayEl.classList.contains("trade"))
+  if (!activeDayEl.classList.contains("trade")) {
     activeDayEl.classList.add("trade");
+  }
 }
 
 function delTradeFunc() {
@@ -320,5 +322,29 @@ function delTradeFunc() {
       tradesArr = tradesArr.filter((trade) => trade !== daytrades);
     }
     updatetrades(activeDay);
+  }
+}
+
+function calculateTotalProfitForSelectedDay() {
+  let totalProfit = 0;
+  let tradeUnderLine = document.querySelector(".trade");
+
+  const daytrades = tradesArr.find(
+    (trade) =>
+      trade.day === activeDay &&
+      trade.month === month + 1 &&
+      trade.year === year
+  );
+
+  if (daytrades) {
+    daytrades.trades.forEach((trade) => {
+      totalProfit += parseFloat(trade.profit);
+    });
+  }
+
+  if (totalProfit >= 0) {
+    tradeUnderLine.style.setProperty("--afterBack", "#3cb043");
+  } else {
+    tradeUnderLine.style.setProperty("--afterBack", "#d0312D");
   }
 }
