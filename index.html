@@ -20,11 +20,11 @@
       <div class="left">
         <div class="calendar">
           <div class="month">
-            <button>
+            <button id="prevBtn">
               <i class="fa-solid fa-angle-left"></i>
             </button>
             <div class="date">current date</div>
-            <button>
+            <button id="nextBtn">
               <i class="fa-solid fa-angle-right"></i>
             </button>
           </div>
@@ -40,7 +40,7 @@
           <div class="days"></div>
           <div class="goto-date">
             <input type="text" placeholder="mm/yyyy" class="date-input" />
-            <button class="goto-btn">Go</button>
+            <button class="goto-btn" onclick="goToDateFunc()">Go</button>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
               />
             </div>
             <div class="add-trade-input">
-              <input type="text" placeholder="Trade Pair" class="traded-pair" />
+              <input type="text" placeholder="Trade Pair" class="trade-pair" />
             </div>
             <div class="add-trade-input">
               <input
@@ -85,7 +85,9 @@
             </div>
           </div>
           <div class="add-trade-footer">
-            <button class="add-trade-btn">Add</button>
+            <button class="add-trade-btn" onclick="addTradeSumbit()">
+              Add
+            </button>
           </div>
         </div>
         <div class="add-btn-section">
