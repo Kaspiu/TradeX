@@ -1,4 +1,4 @@
-# CURRENT STATE 75% DONE ⏳
+# CURRENT STATE 80% DONE ⏳
 
 ## TradeX
 
