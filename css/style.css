@@ -538,6 +538,7 @@ body {
   color: #d0312d;
   overflow: hidden;
   transition: 0.3s;
+  user-select: none;
 }
 
 .main .error i {
