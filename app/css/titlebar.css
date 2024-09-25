@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #191d26;
+  overflow: hidden;
+}
+
+/* -----------------TITLEBAR----------------- */
+
+#titlebar {
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #f0f1f5;
+  width: 100%;
+  user-select: none;
+}
+
+#drag-region {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.6rem;
+}
+
+#window-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  gap: 5px;
+}
+
+#window-title p {
+  display: flex;
+  align-items: last baseline;
+  justify-content: center;
+  height: 1.1rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+}
+
+#window-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-app-region: no-drag;
+  height: 2rem;
+}
+
+#window-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  -webkit-app-region: no-drag;
+  width: 2.5rem;
+  height: 100%;
+  transition: 0.3s;
+  font-weight: 700;
+  color: #f0f1f5;
+}
+
+#min-button {
+  font-size: 1rem;
+}
+
+#min-button:hover {
+  background-color: rgba(240, 241, 245, 0.1);
+}
+
+#max-button {
+  font-size: 1rem;
+}
+
+#max-button:hover {
+  background-color: rgba(240, 241, 245, 0.1);
+}
+
+#close-button {
+  font-size: 1rem;
+}
+
+#close-button:hover {
+  background-color: #d0312d;
+}

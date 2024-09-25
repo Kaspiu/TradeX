@@ -8,7 +8,9 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="./images/logo.png" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/titlebar.css" />
+    <link rel="stylesheet" href="./css/leftSide.css" />
+    <link rel="stylesheet" href="./css/rightSide.css" />
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css"
@@ -16,6 +18,23 @@
     <title>TradeX</title>
   </head>
   <body>
+    <div id="titlebar">
+      <div id="drag-region">
+        <div id="window-title">
+          TradeX
+          <p>v1.0.1</p>
+        </div>
+      </div>
+
+      <div id="window-controls">
+        <button id="min-button"><i class="fa-regular fa-minus"></i></button>
+        <button id="max-button">
+          <i class="fa-regular fa-square-small"></i>
+        </button>
+        <button id="close-button"><i class="fa-regular fa-xmark"></i></button>
+      </div>
+    </div>
+
     <div class="main">
       <div class="left">
         <div class="calendar">
@@ -108,5 +127,6 @@
     </div>
 
     <script src="./js/script.js"></script>
+    <script src="./js/titlebar.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@ const devValue = false;
 function createWindow() {
   let win = new BrowserWindow({
     width: 1400,
-    height: 800,
+    height: 850,
     title: "TradeX",
     icon: "./app/images/logo.png",
     frame: false,
