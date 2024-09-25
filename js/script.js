@@ -12,6 +12,7 @@ const addtradeFrom = document.querySelector(".trade-time-from");
 const addtradeTo = document.querySelector(".trade-time-to");
 const errorText = document.getElementById("errorText");
 const error = document.querySelector(".error");
+const monthlyProfitText = document.getElementById("monthlyProfitText");
 
 let today = new Date();
 let activeDay;
@@ -91,6 +92,7 @@ function initCalendar() {
   daysContainer.innerHTML = daysHTML;
   addDayListeners();
   displayTradeUnderLine();
+  monthlyProfit();
 }
 
 function changeMonth(increment) {
@@ -134,6 +136,7 @@ function addDayListeners() {
           ) {
             d.classList.add("active");
             displayTradeUnderLine();
+            monthlyProfit();
           }
         });
       }, 100);
@@ -331,6 +334,7 @@ function addTradeSumbit() {
   }
 
   displayTradeUnderLine();
+  monthlyProfit();
 }
 
 function delTradeFunc(clickedElement) {
@@ -355,6 +359,7 @@ function delTradeFunc(clickedElement) {
   }
 
   displayTradeUnderLine();
+  monthlyProfit();
 }
 
 function displayTradeUnderLine() {
@@ -394,6 +399,26 @@ function displayTradeUnderLine() {
     } else {
       tradeUnderLine.style.setProperty("--afterBack", "#d0312D");
       tradeUnderLine.style.setProperty("--afterBackB", "rgba(25, 29, 38, 0.9)");
+    }
+  }
+}
+
+function monthlyProfit() {
+  let totalMonthProfit = 0;
+
+  tradesArr.forEach((tradeDay) => {
+    if (tradeDay.month === month + 1 && tradeDay.year === year) {
+      tradeDay.trades.forEach((trade) => {
+        totalMonthProfit += parseFloat(trade.profit);
+      });
+    }
+  });
+
+  if (totalMonthProfit) {
+    if (totalMonthProfit >= 0) {
+      monthlyProfitText.innerHTML = `+${totalMonthProfit}$ this month`;
+    } else {
+      monthlyProfitText.innerHTML = `${totalMonthProfit}$ this month`;
     }
   }
 }
