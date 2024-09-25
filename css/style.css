@@ -229,6 +229,15 @@ body {
   cursor: pointer;
 }
 
+.calendar .goto-date .monthly-profit-content {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 /* -----------------RIGHT----------------- */
 
 .main .right {
