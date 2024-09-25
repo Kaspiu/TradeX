@@ -16,14 +16,10 @@ body {
 .main {
   position: relative;
   width: 1400px;
-  min-height: 850px;
-  margin: 20px 0;
+  min-height: 800px;
   padding: 5px;
   color: #f0f1f5;
   display: flex;
-
-  border-radius: 10px;
-  box-shadow: 0 4px 10px 5px rgba(0, 0, 0, 0.3);
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1),
