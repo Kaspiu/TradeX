@@ -36,7 +36,6 @@ let tradesArr = JSON.parse(localStorage.getItem("trades")) || [];
 
 function openAddTradeMenu() {
   menu.style.height = "330px";
-  calculateTotalProfitForSelectedDay();
 }
 
 function closeAddTradeMenu() {
@@ -93,6 +92,7 @@ function initCalendar() {
 
   daysContainer.innerHTML = daysHTML;
   addDayListeners();
+  displayTradeUnderLine();
 }
 
 function changeMonth(increment) {
@@ -135,6 +135,7 @@ function addDayListeners() {
             !d.classList.contains("next-date")
           ) {
             d.classList.add("active");
+            displayTradeUnderLine();
           }
         });
       }, 100);
@@ -193,7 +194,7 @@ function updatetrades(day) {
             </div>
           </div>
           <div class="singleTradeDel">
-            <button class="delBtn" onclick="delTradeFunc()"><i class="fa-solid fa-trash-can-undo"></i></button>
+            <button class="delBtn" onclick="delTradeFunc(this)"><i class="fa-solid fa-trash-can-undo"></i></button>
           </div>
         </div>`;
       } else {
@@ -212,7 +213,7 @@ function updatetrades(day) {
             </div>
           </div>
           <div class="singleTradeDel">
-            <button class="delBtn" onclick="delTradeFunc()"><i class="fa-solid fa-trash-can-undo"></i></button>
+            <button class="delBtn" onclick="delTradeFunc(this)"><i class="fa-solid fa-trash-can-undo"></i></button>
           </div>
         </div>`;
       }
@@ -303,10 +304,14 @@ function addTradeSumbit() {
   if (!activeDayEl.classList.contains("trade")) {
     activeDayEl.classList.add("trade");
   }
+
+  displayTradeUnderLine();
 }
 
-function delTradeFunc() {
-  const tradeTitle = document.querySelector(".trade-title").textContent;
+function delTradeFunc(clickedElement) {
+  const tradeTitle = clickedElement
+    .closest(".trade")
+    .querySelector(".trade-title").textContent;
   const daytrades = tradesArr.find(
     (trade) =>
       trade.day === activeDay &&
@@ -323,11 +328,23 @@ function delTradeFunc() {
     }
     updatetrades(activeDay);
   }
+
+  displayTradeUnderLine();
 }
 
-function calculateTotalProfitForSelectedDay() {
+function displayTradeUnderLine() {
   let totalProfit = 0;
-  let tradeUnderLine = document.querySelector(".trade");
+  let tradeUnderLine = document.querySelector(".active.trade");
+
+  if (
+    !tradeUnderLine ||
+    !tradesArr ||
+    typeof activeDay === "undefined" ||
+    typeof month === "undefined" ||
+    typeof year === "undefined"
+  ) {
+    return;
+  }
 
   const daytrades = tradesArr.find(
     (trade) =>
@@ -340,11 +357,18 @@ function calculateTotalProfitForSelectedDay() {
     daytrades.trades.forEach((trade) => {
       totalProfit += parseFloat(trade.profit);
     });
+  } else {
+    tradeUnderLine.style.setProperty("--afterBack", "transparent");
+    tradeUnderLine.style.setProperty("--afterBackB", "transparent");
   }
 
-  if (totalProfit >= 0) {
-    tradeUnderLine.style.setProperty("--afterBack", "#3cb043");
-  } else {
-    tradeUnderLine.style.setProperty("--afterBack", "#d0312D");
+  if (totalProfit) {
+    if (totalProfit >= 0) {
+      tradeUnderLine.style.setProperty("--afterBack", "#3cb043");
+      tradeUnderLine.style.setProperty("--afterBackB", "rgba(25, 29, 38, 0.9)");
+    } else {
+      tradeUnderLine.style.setProperty("--afterBack", "#d0312D");
+      tradeUnderLine.style.setProperty("--afterBackB", "rgba(25, 29, 38, 0.9)");
+    }
   }
 }
