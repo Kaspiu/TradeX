@@ -1,4 +1,3 @@
-// Cache commonly accessed elements
 const menu = document.getElementById("addMenu");
 const date = document.querySelector(".date");
 const daysContainer = document.querySelector(".days");
@@ -11,6 +10,8 @@ const addtradeTitle = document.querySelector(".trade-pair");
 const addprofitAmount = document.querySelector(".profit-amount");
 const addtradeFrom = document.querySelector(".trade-time-from");
 const addtradeTo = document.querySelector(".trade-time-to");
+const errorText = document.getElementById("errorText");
+const error = document.querySelector(".error");
 
 let today = new Date();
 let activeDay;
@@ -55,12 +56,10 @@ function initCalendar() {
 
   let daysHTML = "";
 
-  // Add days of previous month
   for (let x = day; x > 0; x--) {
     daysHTML += `<div class="day prev-date">${prevDays - x + 1}</div>`;
   }
 
-  // Add current month days
   for (let i = 1; i <= lastDate; i++) {
     const isToday =
       i === today.getDate() &&
@@ -85,7 +84,6 @@ function initCalendar() {
     daysHTML += `<div class="${dayClass}">${i}</div>`;
   }
 
-  // Add next month days
   for (let j = 1; j <= nextDays; j++) {
     daysHTML += `<div class="day next-date">${j}</div>`;
   }
@@ -161,7 +159,17 @@ function goToDateFunc() {
     year = dateArr[1];
     initCalendar();
   } else {
-    alert("Invalid Date");
+    errorText.innerHTML = "Invalid Date";
+    error.style.display = "flex";
+    setTimeout(() => {
+      error.style.opacity = "1";
+    }, 200);
+    setTimeout(() => {
+      error.style.opacity = "0";
+      setTimeout(() => {
+        error.style.display = "none";
+      }, 200);
+    }, 2000);
   }
 }
 
@@ -256,17 +264,34 @@ function addTradeSumbit() {
   const tradeTimeTo = addtradeTo.value;
 
   if (!tradeTitle || !tradeTimeFrom || !tradeTimeTo || !profitAmount) {
-    return alert("Please fill all fields");
+    errorText.innerHTML = "Please fill all fields";
+    error.style.display = "flex";
+    setTimeout(() => {
+      error.style.opacity = "1";
+    }, 200);
+    setTimeout(() => {
+      error.style.opacity = "0";
+      setTimeout(() => {
+        error.style.display = "none";
+      }, 200);
+    }, 2000);
+    return;
   }
 
   const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
   if (!timeRegex.test(tradeTimeFrom) || !timeRegex.test(tradeTimeTo)) {
-    return alert("Invalid Time Format");
-  }
-
-  const profitRegex = /^[0-9.-]*$/;
-  if (!profitRegex.test(profitAmount)) {
-    return alert("Invalid Profit Format");
+    errorText.innerHTML = "Invalid Time Format";
+    error.style.display = "flex";
+    setTimeout(() => {
+      error.style.opacity = "1";
+    }, 200);
+    setTimeout(() => {
+      error.style.opacity = "0";
+      setTimeout(() => {
+        error.style.display = "none";
+      }, 200);
+    }, 2000);
+    return;
   }
 
   const newtrade = {
