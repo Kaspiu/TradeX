@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="./images/logo.png" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css"
+    />
+    <title>TradeX</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+        <div class="calendar">
+          <div class="month">
+            <button id="prevBtn">
+              <i class="fa-solid fa-angle-left"></i>
+            </button>
+            <div class="date">current date</div>
+            <button id="nextBtn">
+              <i class="fa-solid fa-angle-right"></i>
+            </button>
+          </div>
+          <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+          <div class="days"></div>
+          <div class="goto-date">
+            <input type="text" placeholder="mm/yyyy" class="date-input" />
+            <button class="goto-btn" onclick="goToDateFunc()">Go</button>
+            <div class="monthly-profit-content">
+              <p id="monthlyProfitText"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="today-date">
+          <div class="app-title">TradeX</div>
+          <div class="trade-date">current date</div>
+        </div>
+        <div class="trades"></div>
+        <div id="addMenu" class="add-trade-wrapper">
+          <div class="add-trade-header">
+            <div class="title">Add Trade</div>
+            <button onclick="closeAddTradeMenu()">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="add-trade-body">
+            <div class="add-trade-input">
+              <input
+                type="text"
+                placeholder="Profit Amount in $"
+                class="profit-amount"
+              />
+            </div>
+            <div class="add-trade-input">
+              <input type="text" placeholder="Trade Pair" class="trade-pair" />
+            </div>
+            <div class="add-trade-input">
+              <input
+                type="text"
+                placeholder="Trade Time From"
+                class="trade-time-from"
+              />
+            </div>
+            <div class="add-trade-input">
+              <input
+                type="text"
+                placeholder="Trade Time To"
+                class="trade-time-to"
+              />
+            </div>
+          </div>
+          <div class="add-trade-footer">
+            <button class="add-trade-btn" onclick="addTradeSumbit()">
+              Add
+            </button>
+          </div>
+        </div>
+        <div class="add-btn-section">
+          <div class="author"><p>Made by Project PYT</p></div>
+          <button onclick="openAddTradeMenu()" class="add-trade">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="error">
+        <i class="fa-regular fa-triangle-exclamation"></i>
+        <p id="errorText"></p>
+      </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
