@@ -2,7 +2,6 @@
 
 - **Changing TradeX from a website to a desktop application.**
 - **Add a monthly profit tab.**
-- **More...**
 
 ## TradeX
 
