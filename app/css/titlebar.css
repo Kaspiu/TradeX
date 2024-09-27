@@ -1,3 +1,5 @@
+/* -----------------MAIN----------------- */
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +15,35 @@ body {
   flex-direction: column;
   background-color: #191d26;
   overflow: hidden;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 97vh;
+  padding: 5px;
+  border-radius: 5px;
+  color: #f0f1f5;
+  display: flex;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#smallScreen {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 97vh;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f0f1f5;
 }
 
 /* -----------------TITLEBAR----------------- */
@@ -45,10 +76,9 @@ body {
 
 #window-title p {
   display: flex;
-  align-items: last baseline;
+  align-items: center;
   justify-content: center;
-  height: 1.1rem;
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
@@ -96,4 +126,60 @@ body {
 
 #close-button:hover {
   background-color: #d0312d;
+}
+
+/* -----------------ERROR----------------- */
+
+.main .error {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  font-size: 1.6rem;
+  font-weight: 700;
+  opacity: 0;
+  width: 30%;
+  height: 25%;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  gap: 20px;
+  color: #d0312d;
+  overflow: hidden;
+  transition: 0.3s;
+  user-select: none;
+}
+
+.main .error i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+}
+
+.main .error #errorText {
+  display: flex;
+  align-items: center;
+}
+
+/* -----------------SCALING----------------- */
+
+@media (max-height: 520px), (max-width: 550px) {
+  .main {
+    display: none;
+  }
+
+  #smallScreen {
+    display: flex;
+  }
 }

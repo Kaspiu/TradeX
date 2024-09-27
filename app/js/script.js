@@ -1,3 +1,5 @@
+/* -----------------VARIABLES----------------- */
+
 const menu = document.getElementById("addMenu");
 const date = document.querySelector(".date");
 const daysContainer = document.querySelector(".days");
@@ -36,14 +38,19 @@ const months = [
 
 let tradesArr = JSON.parse(localStorage.getItem("trades")) || [];
 
+/* -----------------FUNCTIONS----------------- */
+
+/* Opens the new trade menu */
 function openAddTradeMenu() {
   menu.style.height = "330px";
 }
 
+/* Closes the new trade menu*/
 function closeAddTradeMenu() {
   menu.style.height = "0";
 }
 
+/* Adds days to the calendar */
 function initCalendar() {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
@@ -95,6 +102,7 @@ function initCalendar() {
   monthlyProfit();
 }
 
+/* Changes the month when the arrow button is clicked */
 function changeMonth(increment) {
   month += increment;
   if (month > 11) {
@@ -108,11 +116,7 @@ function changeMonth(increment) {
   initCalendar();
 }
 
-prev.addEventListener("click", () => changeMonth(-1));
-next.addEventListener("click", () => changeMonth(1));
-
-initCalendar();
-
+/* Checks if a day has been clicked */
 function addDayListeners() {
   document.querySelectorAll(".day").forEach((day) => {
     day.addEventListener("click", (e) => {
@@ -144,12 +148,7 @@ function addDayListeners() {
   });
 }
 
-dateInput.addEventListener("input", (e) => {
-  dateInput.value = dateInput.value.replace(/[^0-9/]/g, "").slice(0, 7);
-  if (dateInput.value.length === 2 && e.inputType !== "deleteContentBackward")
-    dateInput.value += "/";
-});
-
+/* Goes to the entered date */
 function goToDateFunc() {
   const dateArr = dateInput.value.split("/");
   if (
@@ -176,10 +175,12 @@ function goToDateFunc() {
   }
 }
 
+/* When you click on a day, it becomes active */
 function getActiveDay(date) {
   tradeDate.innerHTML = `${date} ${months[month]} ${year}`;
 }
 
+/* Updates trades table */
 function updatetrades(day) {
   let tradesHTML = "";
   const daytrades = tradesArr.find(
@@ -237,10 +238,7 @@ function updatetrades(day) {
   localStorage.setItem("trades", JSON.stringify(tradesArr));
 }
 
-addtradeTitle.addEventListener("input", () => {
-  addtradeTitle.value = addtradeTitle.value.slice(0, 60);
-});
-
+/* Specifies the format for entering the date into inputs */
 function handleTimeInput(inputElement) {
   inputElement.addEventListener("input", () => {
     inputElement.value = inputElement.value.replace(/[^0-9:]/g, "").slice(0, 5);
@@ -248,6 +246,7 @@ function handleTimeInput(inputElement) {
   });
 }
 
+/* Specifies the format for entering the profit value into input */
 function handleProfitInput(inputElement) {
   inputElement.addEventListener("input", () => {
     inputElement.value = inputElement.value
@@ -256,10 +255,7 @@ function handleProfitInput(inputElement) {
   });
 }
 
-handleTimeInput(addtradeFrom);
-handleTimeInput(addtradeTo);
-handleProfitInput(addprofitAmount);
-
+/* Adds a new trade to the trade table */
 function addTradeSumbit() {
   const tradeTitle = addtradeTitle.value.trim();
   const profitAmount = addprofitAmount.value;
@@ -337,6 +333,7 @@ function addTradeSumbit() {
   monthlyProfit();
 }
 
+/* Removes a trade to the trade table */
 function delTradeFunc(clickedElement) {
   const tradeTitle = clickedElement
     .closest(".trade")
@@ -362,6 +359,7 @@ function delTradeFunc(clickedElement) {
   monthlyProfit();
 }
 
+/* Displays a line under the day in the calendar whether the day is positive or negative */
 function displayTradeUnderLine() {
   let totalProfit = 0;
   let tradeUnderLine = document.querySelector(".active.trade");
@@ -403,6 +401,7 @@ function displayTradeUnderLine() {
   }
 }
 
+/* Displays the monthly profit */
 function monthlyProfit() {
   let totalMonthProfit = 0;
 
@@ -420,5 +419,28 @@ function monthlyProfit() {
     } else {
       monthlyProfitText.innerHTML = `${totalMonthProfit}$ this month`;
     }
+  } else {
+    monthlyProfitText.innerHTML = `0$ this month`;
   }
 }
+
+/* -----------------LISTENERS----------------- */
+
+prev.addEventListener("click", () => changeMonth(-1));
+next.addEventListener("click", () => changeMonth(1));
+
+initCalendar();
+
+dateInput.addEventListener("input", (e) => {
+  dateInput.value = dateInput.value.replace(/[^0-9/]/g, "").slice(0, 7);
+  if (dateInput.value.length === 2 && e.inputType !== "deleteContentBackward")
+    dateInput.value += "/";
+});
+
+addtradeTitle.addEventListener("input", () => {
+  addtradeTitle.value = addtradeTitle.value.slice(0, 60);
+});
+
+handleTimeInput(addtradeFrom);
+handleTimeInput(addtradeTo);
+handleProfitInput(addprofitAmount);

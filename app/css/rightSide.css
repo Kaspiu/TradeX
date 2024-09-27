@@ -15,7 +15,6 @@
   height: 125px;
   display: flex;
   flex-wrap: wrap;
-  gap: 100px;
   align-items: center;
   justify-content: space-between;
   padding: 0 25px;
@@ -26,11 +25,13 @@
 .right .today-date .app-title {
   font-size: 2.2rem;
   font-weight: 700;
+  transition: 0.1s;
 }
 .right .today-date .trade-date {
   font-size: 1.2rem;
   font-weight: 500;
   color: #f0f1f5;
+  transition: 0.1s;
 }
 .trades {
   width: 100%;
@@ -39,6 +40,26 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  overflow-y: scroll;
+  --sb-track-color: transparent;
+  --sb-thumb-color: rgba(240, 241, 245, 0.3);
+  --sb-size: 10px;
+}
+
+.trades::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.trades::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 5px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .trades {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }
 
 .trades .trade {
@@ -52,6 +73,7 @@
   background: linear-gradient(90deg, rgba(240, 241, 245, 0.3), transparent);
   border-radius: 5px;
   margin-bottom: 15px;
+  transition: 0.1s;
 }
 
 .trades .trade .singleTradeContent {
@@ -61,6 +83,7 @@
   flex-direction: column;
   font-size: 1.2rem;
   font-weight: 500;
+  transition: 0.1s;
 }
 
 .trades .trade .singleTradeContent .title {
@@ -73,6 +96,7 @@
 
 .trades .trade .singleTradeContent .title i {
   font-size: 0.7rem;
+  transition: 0.1s;
 }
 
 .trades .trade .singleTradeContent .title .trade-time {
@@ -81,6 +105,7 @@
   justify-content: center;
   font-size: 1rem;
   font-weight: 500;
+  transition: 0.1s;
 }
 
 .trades .trade .singleTradeContent .tradeProfit {
@@ -90,6 +115,7 @@
   justify-content: left;
   font-size: 1.2rem;
   font-weight: 500;
+  transition: 0.1s;
 }
 
 .trades .trade .singleTradeDel button {
@@ -120,6 +146,7 @@
   font-size: 1.6rem;
   font-weight: 700;
   color: rgba(240, 241, 245, 0.3);
+  transition: 0.1s;
 }
 
 .add-btn-section {
@@ -135,6 +162,7 @@
   font-size: 1rem;
   font-weight: 500;
   padding: 0 25px;
+  transition: 0.1s;
 }
 
 .add-btn-section .add-trade {
@@ -183,6 +211,7 @@
   font-weight: 500;
   background-color: #f0f1f5;
   border-bottom: 1px solid rgba(25, 29, 38, 0.3);
+  transition: 0.1s;
 }
 
 .add-trade-header button {
@@ -269,46 +298,65 @@
   color: #f0f1f5;
 }
 
-/* -----------------ERROR----------------- */
+/* -----------------SCALING----------------- */
 
-.main .error {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  font-size: 1.6rem;
-  font-weight: 700;
-  opacity: 0;
-  width: 30%;
-  height: 25%;
-  left: 50%;
-  top: 30%;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  gap: 20px;
-  color: #d0312d;
-  overflow: hidden;
-  transition: 0.3s;
-  user-select: none;
-}
+@media (max-height: 680px) {
+  .right .today-date .app-title {
+    font-size: 1.6rem;
+  }
+  .right .today-date .trade-date {
+    font-size: 0.9rem;
+  }
 
-.main .error i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.2rem;
-}
+  .trades .trade .singleTradeContent {
+    font-size: 0.9rem;
+  }
 
-.main .error #errorText {
-  display: flex;
-  align-items: center;
+  .trades .trade .singleTradeContent .title i {
+    font-size: 0.6rem;
+  }
+
+  .trades .trade .singleTradeContent .title .trade-time {
+    font-size: 0.6rem;
+  }
+
+  .trades .trade .singleTradeContent .tradeProfit {
+    font-size: 0.9rem;
+  }
+
+  .trades .trade .singleTradeDel button {
+    font-size: 0.9rem;
+  }
+
+  .trades .no-trade {
+    font-size: 1.2rem;
+  }
+
+  .add-btn-section p {
+    font-size: 0.9rem;
+  }
+
+  .add-btn-section .add-trade {
+    font-size: 0.9rem;
+  }
+
+  .add-trade-wrapper .add-trade-header {
+    font-size: 0.9rem;
+  }
+
+  .add-trade-header button {
+    font-size: 0.9rem;
+  }
+
+  .add-trade-body .add-trade-input input {
+    font-size: 0.9rem;
+  }
+
+  .add-trade-footer button {
+    font-size: 0.9rem;
+  }
+
+  .trades .trade {
+    min-height: 60px;
+  }
 }
